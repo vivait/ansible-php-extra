@@ -12,5 +12,10 @@
 - name: Set process control timeout for php-fpm
   lineinfile: state="present" dest="{{ php_conf_path }}/php-fpm.conf" regexp=";?process_control_timeout = .+$" line="process_control_timeout = {{fpm_process_control_timeout}}"
 
-- name: Use custom pool conf
-  template: src="www.conf.j2" dest="{{ php_conf_path }}/pool.d/www.conf"
+- name: Use custom pool conf (PHP 7.0)
+  template: src="php7.0-www.conf.j2" dest="{{ php_conf_path }}/pool.d/www.conf"
+  when: "'php7.0-fpm' in php_packages"
+
+- name: Use custom pool conf (PHP 5)
+  template: src="php5-www.conf.j2" dest="{{ php_conf_path }}/pool.d/www.conf"
+  when: "'php5-fpm' in php_packages"

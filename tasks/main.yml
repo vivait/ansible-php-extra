@@ -13,7 +13,7 @@
 - name: Put PHP CLI configuration file in place
   template:
     src: php-cli.ini.j2
-    dest: "/etc/php5/cli/php.ini"
+    dest: "/etc/{{ 'php5' if 'php5-cli' in php_packages else 'php/7.0' }}/cli/php.ini"
     owner: root
     group: root
     mode: 0644
@@ -26,6 +26,6 @@
     - restart webserver
 
 - include: fpm.yml
-  when: "'php5-fpm' in php_packages"
+  when: "'php5-fpm' in php_packages or 'php7.0-fpm' in php_packages"
   notify:
     - restart php-fpm

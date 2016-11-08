@@ -7,7 +7,7 @@
     group: root
     mode: 0644
   notify:
-    - restart php-fpm
+    - restart php5.6-fpm
     - restart webserver
 
 - name: Put PHP CLI configuration file in place

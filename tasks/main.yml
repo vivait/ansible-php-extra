@@ -26,6 +26,6 @@
     - restart webserver
 
 - include: fpm.yml
-  when: "'php5-fpm' in php_packages or 'php7.0-fpm' in php_packages"
+  when: "'php5.6-fpm' in php_packages or 'php7.0-fpm' in php_packages"
   notify:
     - restart php-fpm

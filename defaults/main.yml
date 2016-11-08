@@ -16,3 +16,5 @@ fpm_ping_path: '/fpm-ping'
 fpm_emergency_restart_threshold: 10
 fpm_emergency_restart_interval: 1m
 fpm_process_control_timeout: 10s
+
+php_fpm_listen: "127.0.0.1:9000"

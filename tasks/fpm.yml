@@ -18,4 +18,4 @@
 
 - name: Use custom pool conf (PHP 5)
   template: src="php5-www.conf.j2" dest="{{ php_conf_path }}/pool.d/www.conf"
-  when: "'php5-fpm' in php_packages"
+  when: "'php5.6-fpm' in php_packages"
